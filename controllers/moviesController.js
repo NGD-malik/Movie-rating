@@ -47,26 +47,32 @@ exports.update = async (req, res) => {
     
     const {id} = req.params;
     const { name, category, description} = req.body;
-
-    await Movie.updateOne({_id: id}, {
-        $set: {
-            name,
-            category,
-            description
-        }
-    });
-
-    // if (!movie){
-    //     return res.status(404).send();
-    // }    
-    
-    res.json({
-        success: true,
-    });
+    try {
+        await Movie.updateOne({_id: id}, {
+            $set: {
+                name,
+                category,
+                description
+            }
+        });
+        res.json({
+            success: true,
+        });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
 
 exports.delete = async (req, res) => {
-    res.json({
-        success: true,
-    });
+
+    const {id} = req.params;
+
+    try {
+        await Movie.deleteOne({_id: id});
+        res.json({
+            success: true,
+        });
+    } catch (error) {
+        res.status(500).send(err);
+    }
 };
