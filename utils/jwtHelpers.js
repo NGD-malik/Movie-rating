@@ -3,7 +3,7 @@ const secret = process.env.JWT_SECRET;
 const expiresIn = process.env.JWY_EXPIRES_IN;
 
 exports.sign = (payload) => {
-    return jwt.sign(payload,secret, {expiresIn});
+    return jwt.sign(payload, secret, {expiresIn});
 };
 
 exports.verify = (token) => {

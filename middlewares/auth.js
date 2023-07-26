@@ -2,7 +2,7 @@ const jwtHelpers = require('../utils/jwtHelpers');
 
 
 exports.check = (req, res, next) => {
-    let token = req.headers['Authorization'];
+    let token = req.headers['authorization'];
     token = token?.replace('Bearer','')?.trim();
 
     const payload = jwtHelpers.verify(token);

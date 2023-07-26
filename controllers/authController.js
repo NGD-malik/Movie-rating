@@ -21,7 +21,7 @@ exports.login = async (req, res) => {
 
     if ( comparedPassword(password, userDB.password) ){
         return res.status(200).json({
-            message: 'Logged In!',
+            success: true,
             data: {
                 id: userDB.id,
                 name: userDB.name,
